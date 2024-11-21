@@ -10,4 +10,6 @@ and returns their sum as a float.
 
 def sum_list(input_list: list[float]) -> float:
     """Return the sum of a list of floats."""
-    return float(sum(input_list))
+    if input_list is None:
+        return 0
+    return sum(input_list)
