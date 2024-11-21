@@ -9,7 +9,13 @@ and returns their sum as a float.
 
 
 def sum_list(input_list: list[float]) -> float:
-    """Return the sum of a list of floats."""
-    if input_list is None:
-        return 0
+    """
+    Takes a list of floats and returns their sum as a float.
+
+    Args:
+        input_list (List[float]): List of floating-point numbers.
+
+    Returns:
+        float: The sum of the list elements.
+    """
     return sum(input_list)
