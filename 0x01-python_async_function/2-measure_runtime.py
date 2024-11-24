@@ -6,20 +6,22 @@ the total execution time for wait_n(n, max_delay),
 and returns total_time / n
 """
 import asyncio
+from time import perf_counter
 from typing import List
 
-wait_random = __import__('0-basic_async_syntax').wait_random
+wait_n = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delay: int) -> List[float]:
+async def measure_time(n: int, max_delay: int) -> List[float]:
     """
-    Spawns wait_random n times with a specified delay
-    between each call. return a float
+    Measure the total execution time
     Args:
         n: number of times to spawn wait_random
         max_delay: maximum delay between each call
     Returns:
         list of delays
     """
-    tasks = [asyncio.create_task(wait_random(max_delay)) for _ in range(n)]
-    return [await task for task in asyncio.as_completed(tasks)]
+    start = perf_counter()
+    asyncio.run(wait_n(n, max_delay))
+    elapsed_time = perf_counter() - start
+    return elapsed_time / n
