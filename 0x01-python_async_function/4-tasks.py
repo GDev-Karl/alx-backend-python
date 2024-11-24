@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
-"""
-A method that spawns Tasks n times with a
-specified delay between each call.
-"""
+"""Contains a method that spawns Tasks n times with a
+specified delay between each call."""
 import asyncio
 from typing import List
 
