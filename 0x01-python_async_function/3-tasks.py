@@ -1,21 +1,15 @@
 #!/usr/bin/env python3
-"""
-A method that measure the total execution time of
-a function
-"""
-from time import perf_counter
+"""Contains a method that returns a task"""
 import asyncio
-wait_n = __import__('1-concurrent_coroutines').wait_n
+
+wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-def measure_time(n: int, max_delay: int) -> float:
-    """Measure the total execution time of a function
-    Args:
-        n: the number of coroutines to launch
-        max_delay: the maximum amount of time to wait for each coroutine
-    Returns: elapsed time in seconds
+def task_wait_random(max_delay: int) -> asyncio.Task:
     """
-    start = perf_counter()
-    asyncio.run(wait_n(n, max_delay))
-    elapsed = perf_counter() - start
-    return elapsed / n
+    Returns a task that waits for a random number of seconds
+    Args:
+        max_delay: maximum number of seconds that the task will wait
+    Returns: an asyncio.Task object
+    """
+    return asyncio.create_task(wait_random(max_delay))
